@@ -17,11 +17,11 @@ steps:
 - task: FortifySCA@7
   inputs:
     applicationType: 'other'
-    buildAnalyzerParams: '-exclude ./node_modules/*'
-    fortifyBuildId: 'nodejs-project-frontend'
+    buildAnalyzerParams: '-exclude .node_modules/*'
+    fortifyBuildId: 'nodejs-project-frontend-azure'
     scaVerbose: true
     scaDebug: true
-    fortifyScanType: 'ScanCentralScan'
-    scanCentralRunFortifyUpload: true
-    scanCentralFortifyApplicationIdentifierType: 'byId'
-    scanCentralFortifyApplicationVersionId: '10027'
+    fortifyScanType: 'LocalScan'
+    runFortifyUpload: true
+    fortifyApplicationIdentifierType: 'byId'
+    fortifyApplicationVersionId: '10027'
