@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool: Default
+
+steps:
+
+- script: |
+    npm install
+    displayName: 'npm install '
+
+- task: FortifySCA@7
+  inputs:
+    applicationType: 'other'
+    buildAnalyzerParams: '-exclude'
+    fortifyBuildId: 'nodejs-project-frontend'
+    scaVerbose: true
+    scaDebug: true
+    fortifyScanType: 'ScanCentralScan'
+    scanCentralRunFortifyUpload: true
+    scanCentralFortifyApplicationIdentifierType: 'byId'
+    scanCentralFortifyApplicationVersionId: '10027'
